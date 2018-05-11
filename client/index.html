@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Speaker Timer</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+            #box {
+                height: 100vh;
+                font-size: 400px;
+                text-align: center;
+                color: black;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: Courier;
+            }
+            .green {
+                background-color: green;
+            }
+            .yellow {
+                background-color: yellow;
+            }
+            .red {
+                background-color: red;
+            }
+        </style>        
+    </head>
+    <body>
+        <div id="box" class="green"></div>
+        <script>
+            window.onload = () => {
+                const yellow = 3 * 60 * 1000;
+                const red = 1 * 60 * 1000;
+            
+                const box = document.getElementById('box');
+        
+                const now = new Date();
+                const setTime = () => {
+                    const totalSeconds = parseInt((new Date() - now)/1000);
+                    let minutes = parseInt(totalSeconds / 60);
+                    let seconds = parseInt(totalSeconds - minutes * 60);
+                    minutes = ("00" + minutes).slice(-2);
+                    seconds = ("00" + seconds).slice(-2);
+                    box.innerHTML = minutes + ":" + seconds;
+                };
+        
+                setTime();
+        
+                setTimeout(() => {
+                    box.className = 'yellow';
+                    setTimeout(()=>{
+                        box.className = 'red';
+                    }, red);
+                }, yellow);
+            
+                setInterval(() => {
+                    setTime();
+                }, 1000);
+            };	
+        </script>
+    </body>
+</html>
+
+
+
+
