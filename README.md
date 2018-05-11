@@ -5,3 +5,5 @@
 - After 4 minutes it turns red and starts to count up in negative numbers.
 
 Deployed at: https://speaker-timer.doopr.com
+
+Reset ALL timers by reloading this URL: https://speaker-timer.doopr.com/reset
