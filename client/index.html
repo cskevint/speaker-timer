@@ -47,13 +47,24 @@
                 const box = document.getElementById('box');
         
                 const now = new Date();
-                const setTime = () => {
-                    const totalSeconds = parseInt((new Date() - now)/1000);
+                const calculateTime = (totalSeconds, negative) => {
                     let minutes = parseInt(totalSeconds / 60);
                     let seconds = parseInt(totalSeconds - minutes * 60);
                     minutes = ("00" + minutes).slice(-2);
                     seconds = ("00" + seconds).slice(-2);
-                    box.innerHTML = minutes + ":" + seconds;
+                    box.innerHTML = (negative ? '-' : '') + minutes + ":" + seconds;
+                };
+
+                const setTime = () => {
+                    const totalSeconds = parseInt((new Date() - now)/1000);
+                    const fourMinutes = 4 * 60;
+                    let seconds = fourMinutes - totalSeconds;
+                    let negative = false;
+                    if (seconds < 0) {
+                        seconds = -1 * seconds;
+                        negative = true;
+                    }
+                    calculateTime(seconds, negative);
                 };
         
                 setTime();
