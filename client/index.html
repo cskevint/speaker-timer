@@ -41,8 +41,8 @@
                 });
 
             window.onload = () => {
-                const yellow = 3 * 60 * 1000;
-                const red = 1 * 60 * 1000;
+                const red = 30 * 1000;
+                const yellow = 2 * 60 * 1000 + red;
             
                 const box = document.getElementById('box');
         
@@ -57,8 +57,8 @@
 
                 const setTime = () => {
                     const totalSeconds = parseInt((new Date() - now)/1000);
-                    const fourMinutes = 4 * 60;
-                    let seconds = fourMinutes - totalSeconds;
+                    const totalTime = 3 * 60;
+                    let seconds = totalTime - totalSeconds;
                     let negative = false;
                     if (seconds < 0) {
                         seconds = -1 * seconds;
